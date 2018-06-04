@@ -1,0 +1,70 @@
+<!--
+Phonograph 1.0.1 (http://github.com/sebastianjacobs/phonograph)
+Built by Sebastian Jacobs (http://sebastianjacobs.com)
+Licensed under the MIT license
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Phonograph</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="images/bg.png" />
+    <link rel="icon" type="image/png" href="images/bg.png" />
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js"></script>
+  </head>
+  <body ng-app="music">
+    <div ng-controller="musicController" role="main">
+      <div ng-class="musicFlags.playTitle ? 'bg spin' : 'bg spin paused'"></div>
+      <div class="container page-wrapper">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="nav nav-pills music-nav">
+              <li role="presentation" ng-class="{active: location === '/songs'}"><a href="#!songs">Songs</a></li>
+              <li role="presentation" ng-class="{active: location === '/albums'}"><a href="#!albums">Albums</a></li>
+              <li role="presentation" ng-class="{active: location === '/artists'}"><a href="#!artists">Artists</a></li>
+              <li role="presentation" ng-class="{active: location === '/genres'}"><a href="#!genres">Genres</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div ng-show="musicFlags.titleSet === true" class="music-nav pull-right" role="group" aria-label="...">
+              <button type="button" class="btn" title="Play" ng-show="musicFlags.playTitle === false" ng-click="playMusic()"><i class="glyphicon glyphicon-play"></i></button>
+              <button type="button" class="btn" title="Pause" ng-show="musicFlags.playTitle === true" ng-click="pauseMusic()"><i class="glyphicon glyphicon-pause"></i></button>
+              <button type="button" class="btn btn-link music-info">{{ titleName }} ({{ artistName }})</button>
+              <button type="button" class="btn" title="Stop" ng-click="stopMusic()"><i class="glyphicon glyphicon-stop"></i></button>
+              <button type="button" class="btn" title="Mute" ng-show="musicFlags.playMute === false" ng-click="muteMusic()"><i class="glyphicon glyphicon-volume-up"></i></button>
+              <button type="button" class="btn" title="Unmute" ng-show="musicFlags.playMute === true" ng-click="unmuteMusic()"><i class="glyphicon glyphicon-volume-off"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="content" ng-hide="titles.length === 0" ng-view></div>
+        <div ng-hide="titles.length > 0" class="row error">
+          <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+              <p>No music found. :(</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/music.js"></script>
+    <script src="js/controllers/musicController.js"></script>
+    <script src="js/factories/musicControl.js"></script>
+    <script src="js/directives/songs.js"></script>
+    <script src="js/directives/albums.js"></script>
+    <script src="js/directives/artists.js"></script>
+    <script src="js/directives/genres.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+  </body>
+</html>

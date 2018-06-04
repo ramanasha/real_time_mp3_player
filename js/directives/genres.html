@@ -1,0 +1,33 @@
+<!--
+Phonograph 1.0.1 (http://github.com/sebastianjacobs/phonograph)
+Built by Sebastian Jacobs (http://sebastianjacobs.com)
+Licensed under the MIT license
+-->
+<div class="row">
+  <div class="col-md-12">
+    <input type="text" class="form-control music-search" placeholder="Search genres" ng-model="search.genre">
+    <div ng-repeat="title in titles | unique:'genre' | filter:search" class="content">
+      <h3>{{ title.genre }}</h3>
+      <div class="list-group">
+        <a class="list-group-item active" >
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">Title</div>
+            <div class="col-md-3">Artists</div>
+            <div class="col-md-3">Albums</div>
+            <div class="col-md-1">Length</div>
+          </div>
+        </a>
+        <a class="list-group-item"  ng-repeat="title in titles | filter:{ genre: title.genre }">
+          <div class="row">
+            <div class="col-md-1"><span ng-click='playListMusic(title.title, title.artist, title.file)' class="badge music-control"><i class="glyphicon glyphicon-play"></i> Play</span></div>
+            <div class="col-md-4">{{ title.title }}</div>
+            <div class="col-md-3">{{ title.artist }}</div>
+            <div class="col-md-3">{{ title.album }}</div>
+            <div class="col-md-1">{{ title.titleLength }}</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

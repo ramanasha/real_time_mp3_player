@@ -1,0 +1,105 @@
+/*
+Phonograph 1.0.1 (http://github.com/sebastianjacobs/phonograph)
+Built by Sebastian Jacobs (http://sebastianjacobs.com)
+Licensed under the MIT license
+*/
+body {
+  overflow-x: hidden;
+}
+
+.bg {
+  background-image: url(../images/bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 500px;
+  height: 500px;
+  margin: -250px 0 0 -250px;
+  top: 0;
+  left: 50%;
+  z-index: 1000;
+  position: absolute;
+  opacity: 0.1;
+}
+
+.page-wrapper {
+  padding-top: 120px;
+  position: relative;
+  z-index: 1001;
+}
+
+.music-info, .music-info:hover, .music-info:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: default;
+}
+
+.content, .error {
+  padding-bottom: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.thumbnail {
+  max-width: 300px;
+  width: 100%;
+}
+
+.music-nav {
+  margin-bottom: 20px;
+}
+
+.music-search {
+  margin-bottom: 40px;
+}
+
+.music-control {
+  cursor: pointer;
+}
+
+.spin {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 5000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 5000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+.paused {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+@media (max-width: 600px) {
+  .music-info {
+    display: none;
+  }
+}
